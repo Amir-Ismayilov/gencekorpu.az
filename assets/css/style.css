@@ -1,0 +1,99 @@
+/*================================================
+Default CSS
+=================================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+
+html,
+body {
+  height: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--font-color);
+}
+
+/* Light and dark version */
+.button-theme {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  perspective: 1000px;
+}
+
+.sun-icon, .moon-icon {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s, opacity 0.5s;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.sun-icon {
+  fill: #FDB813;
+  transform: rotate(0deg);
+  width: 35px;
+  height: 35px;
+  opacity: 1;
+}
+
+.moon-icon {
+  fill: #E3E4E8;
+  transform: rotate(-180deg);
+  opacity: 0;
+  width: 35px;
+  height: 35px;
+}
+
+.isDarkMode .sun-icon {
+  transform: rotate(180deg);
+  opacity: 0;
+}
+
+.isDarkMode .moon-icon {
+  transform: rotate(0deg);
+  opacity: 1;
+}
+
+/*-------------------------------------------------------------------------------------------------------------------*/
+
+/*Custom scrollBar*/
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--main-font-color);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.leaflet-popup-content-wrapper {
+  width: 195px !important;
+  text-align: center !important;
+}
+
+dd, dt {
+  color: var(--light-mode-font-color-white);
+}
+
+/*-------------------------------------------------------------------------------------------------------------------*/

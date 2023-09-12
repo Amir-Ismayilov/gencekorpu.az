@@ -1,0 +1,33 @@
+:root {
+  /*Fonts colors*/
+  --light-mode-font-color-white: #ffffff;
+
+
+
+  --black-font-color: #000000;
+  --main-font-color: #0133f6;
+  --red-font-color: #ff000e;
+
+
+  --dark-font-color: #515151;
+  --grey-font-color: #e9e9e9;
+
+  /*Backgrounds colors*/
+  --light-mode-bg-color-main: #0133f6;
+  --light-mode-bg-color-gray: #737373;
+  --light-mode-bg-color-black: #2f2f2f;
+  --light-mode-bg-color-gray-2: rgb(164, 164, 164);
+
+
+
+  --white-bg-color: #ffffff;
+  /*Swiper Main Color*/
+  --swiper-theme-color: #0133f6
+}
+
+
+/* Ночной режим */
+[data-theme='dark'] {
+  --font-color: #ffffff;
+  --bg-color: rgb(164, 164, 164);
+}
