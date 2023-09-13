@@ -14,20 +14,27 @@ body {
   margin: 0;
   font-size: 16px;
   font-family: 'Poppins', sans-serif;
-  background-color: var(--bg-color);
-  color: var(--font-color);
 }
 
-/* Light and dark version */
+/*Aktiv menu*/
+.nuxt-link-exact-active {
+  color: var(--main-font-color) !important;
+  font-weight: bold;
+}
+/*---------------------------------------------------------------------------------------------------*/
+
+
+/* Light and dark version button */
 .button-theme {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+  /*margin-left: -65px;*/
   perspective: 1000px;
 }
 
@@ -42,8 +49,8 @@ body {
 .sun-icon {
   fill: #FDB813;
   transform: rotate(0deg);
-  width: 35px;
-  height: 35px;
+  width: 50px;
+  height: 50px;
   opacity: 1;
 }
 
@@ -51,18 +58,20 @@ body {
   fill: #E3E4E8;
   transform: rotate(-180deg);
   opacity: 0;
-  width: 35px;
-  height: 35px;
+  width: 25px;
+  height: 25px;
 }
 
 .isDarkMode .sun-icon {
   transform: rotate(180deg);
   opacity: 0;
+  display: none;
 }
 
 .isDarkMode .moon-icon {
   transform: rotate(0deg);
   opacity: 1;
+  /*margin-left: -10px;*/
 }
 
 /*-------------------------------------------------------------------------------------------------------------------*/
@@ -86,6 +95,11 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
 }
+
+/*-------------------------------------------------------------------------------------------------------------------*/
+
+
+/* Main css */
 
 .leaflet-popup-content-wrapper {
   width: 195px !important;

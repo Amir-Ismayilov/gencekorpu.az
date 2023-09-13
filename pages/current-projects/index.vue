@@ -2,6 +2,9 @@
   <section class="section_completed_projects">
     <div class="container">
       <div class="row">
+        <div class="col-12">
+          <h1>Cari layihələr</h1>
+        </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg-3"
              v-for="(currentProject, index) in paginatedProjects"
              :key="index">
@@ -15,7 +18,7 @@
       </div>
     </div>
 
-    <div class="pagination">
+    <div class="pagination" v-if="currentProjectsAll.length > 8">
       <button @click="changePage(page - 1)" :disabled="page <= 1">
         <img class="arrow" src="../../assets/icons/arrow/left-arrow.png" alt="arrow_left">
       </button>
@@ -90,6 +93,13 @@ export default {
 .section_completed_projects {
   padding: 70px 0;
   background-color: var(--white-bg-color);
+}
+
+.section_completed_projects h1 {
+  text-align: center;
+  color: var(--main-font-color);
+  margin-bottom: 30px;
+  filter: drop-shadow(3px -2px 2px black);
 }
 
 .pagination {

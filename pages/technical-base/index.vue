@@ -65,8 +65,10 @@ export default {
 }
 
 .technical_base_title h1 {
+  text-align: center;
   color: var(--main-font-color);
   margin-bottom: 30px;
+  filter: drop-shadow(3px -2px 2px black);
 }
 
 .technical_base_content {
@@ -77,6 +79,7 @@ export default {
   text-align: center;
   color: var(--main-font-color);
   margin-bottom: 50px;
+  filter: drop-shadow(3px -2px 2px black);
 }
 
 .image {
@@ -87,6 +90,7 @@ export default {
   height: 250px;
   cursor: pointer;
   transition: 0.5s;
+  user-select: none;
 }
 
 .image:hover {

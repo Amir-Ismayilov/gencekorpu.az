@@ -2,6 +2,10 @@
   <section class="section_news">
     <div class="container">
       <div class="row">
+        <div class="col-12">
+          <h1>Xəbərlər</h1>
+        </div>
+
         <div class="col-12 col-sm-6 col-md-6 col-lg-4"
              v-for="(newsItem, index) in paginatedNews"
              :key="index">
@@ -14,7 +18,7 @@
         </div>
       </div>
 
-      <div class="pagination">
+      <div class="pagination" v-if="newsAll.length > 8">
         <button @click="changePage(page - 1)" :disabled="page <= 1">
           <img class="arrow" src="../../assets/icons/arrow/left-arrow.png" alt="arrow_left">
         </button>
@@ -71,6 +75,9 @@ export default {
       return _.range(start, end + 1);
     }
   },
+  mounted() {
+    console.log(this.newsAll)
+  },
 
   methods: {
     changePage(newPage) {
@@ -88,6 +95,13 @@ export default {
 .section_news {
   padding: 70px 0;
   background-color: var(--white-bg-color);
+}
+
+.section_news h1 {
+  text-align: center;
+  color: var(--main-font-color);
+  margin-bottom: 30px;
+  filter: drop-shadow(3px -2px 2px black);
 }
 
 .pagination {

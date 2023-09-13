@@ -36,7 +36,7 @@
                 <li class="header_main_item">
                   <ul class="menu">
                     <li class="menu-item">
-                      <nuxt-link to="/projects" class="menu-link">Layihələr</nuxt-link>
+                      <nuxt-link to=" " class="menu-link">Layihələr</nuxt-link>
                       <div class="dropdown">
                         <ul>
                           <li>
@@ -93,33 +93,28 @@
                   <li>
                     <nuxt-link to="/">Ana səhifə</nuxt-link>
                   </li>
-                  <li>
+
+                  <li class="header_main_item" v-for="(page,index) in pagesAll" :key="index"
+                      v-if="page.status === 'ACTIVE'">
                     <ul class="menu">
                       <li class="menu-item">
-                        <nuxt-link to="" class="menu-link">Şirkət haqqında</nuxt-link>
+                        <nuxt-link to="#" class="menu-link">{{ page.title }}</nuxt-link>
                         <div class="dropdown">
                           <ul>
-                            <li>
-                              <nuxt-link to="#">Haqqımızda</nuxt-link>
-                            </li>
-                            <li>
-                              <nuxt-link to="#">İdarə heyəti</nuxt-link>
-                            </li>
-                            <li>
-                              <nuxt-link to="#">Vizyon və məqsədlərimiz</nuxt-link>
-                            </li>
-                            <li>
-                              <nuxt-link to="#"> Maliyyə hesabatları</nuxt-link>
+                            <li v-for="(pageChild,index) in page.children" :key="index"
+                                v-if="pageChild.status === 'ACTIVE'">
+                              <nuxt-link :to="'/pages/' + pageChild.id">{{ pageChild.title }}</nuxt-link>
                             </li>
                           </ul>
                         </div>
                       </li>
                     </ul>
                   </li>
+
                   <li>
                     <ul class="menu">
                       <li class="menu-item">
-                        <nuxt-link to="" class="menu-link">Layihələr</nuxt-link>
+                        <nuxt-link to=" " class="menu-link">Layihələr</nuxt-link>
                         <div class="dropdown">
                           <ul>
                             <li>
@@ -133,44 +128,15 @@
                       </li>
                     </ul>
                   </li>
-                  <li>
-                    <ul class="menu">
-                      <li class="menu-item">
-                        <nuxt-link to="" class="menu-link">Fəaliyyət sahələri</nuxt-link>
-                        <div class="dropdown">
-                          <ul>
-                            <li>
-                              <nuxt-link to="#">Körpü və keçid salınması</nuxt-link>
-                            </li>
-                            <li>
-                              <nuxt-link to="#">Yol çəkilişi</nuxt-link>
-                            </li>
-                            <li>
-                              <nuxt-link to="#">Boru kəmərinin çəkilişi</nuxt-link>
-                            </li>
-                            <li>
-                              <nuxt-link to="#">Beton istehsalı</nuxt-link>
-                            </li>
-                            <li>
-                              <nuxt-link to="#">Beton boru istehsalı</nuxt-link>
-                            </li>
-                            <li>
-                              <nuxt-link to="#">Asfalt istehsalı</nuxt-link>
-                            </li>
-                            <li>
-                              <nuxt-link to="#">Labaratoriya</nuxt-link>
-                            </li>
-                          </ul>
-                        </div>
-                      </li>
-                    </ul>
-                  </li>
+
                   <li>
                     <nuxt-link to="/technical-base">Texniki baza</nuxt-link>
                   </li>
+
                   <li>
                     <nuxt-link to="/news"> Xəbərlər</nuxt-link>
                   </li>
+
                   <li>
                     <nuxt-link to="/contacts">Əlaqə</nuxt-link>
                   </li>
@@ -221,8 +187,12 @@ export default {
     },
     toggleTheme() {
       this.isDarkMode = !this.isDarkMode;
-      const mode = this.isDarkMode ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', mode);
+
+      if (this.isDarkMode) {
+        document.body.style.filter = "grayscale(60%)";
+      } else {
+        document.body.style.filter = "";
+      }
     }
   },
   mounted() {
@@ -244,12 +214,6 @@ export default {
 </script>
 
 <style scoped>
-/*Aktiv menu*/
-.nuxt-link-exact-active {
-  color: var(--main-font-color) !important;
-}
-/*---------------------------------------------------------------------------------------------------*/
-
 /*Dropdown menu*/
 .menu-item {
   position: relative;
@@ -278,7 +242,7 @@ export default {
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 5px 0;
-  min-width: 200px;
+  min-width: 210px;
 }
 
 .dropdown li {

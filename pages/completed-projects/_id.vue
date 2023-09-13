@@ -70,6 +70,7 @@ export default {
 .completed_projects_inside h1 {
   color: var(--main-font-color);
   margin-bottom: 30px;
+  filter: drop-shadow(3px -2px 2px black);
 }
 
 .image {
@@ -80,6 +81,7 @@ export default {
   height: 250px;
   cursor: pointer;
   transition: 0.5s;
+  user-select: none;
 }
 
 .image:hover {

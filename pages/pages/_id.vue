@@ -33,11 +33,14 @@ export default {
 .section_main_pages {
   padding: 70px 0;
   background-color: var(--white-bg-color);
+  min-height: 45vh;
 }
 
 .section_main_pages h1 {
+  text-align: center;
   color: var(--main-font-color);
-  margin-bottom: 25px;
+  margin-bottom: 30px;
+  filter: drop-shadow(3px -2px 2px black);
 }
 
 .pages_images {

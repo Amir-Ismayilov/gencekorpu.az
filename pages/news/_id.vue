@@ -173,6 +173,7 @@ export default {
   text-align: center;
   color: var(--dark-font-color);
   border-bottom: 1px solid var(--dark-font-color);
+  filter: drop-shadow(3px -2px 2px black);
 }
 
 .news_main_social_links {

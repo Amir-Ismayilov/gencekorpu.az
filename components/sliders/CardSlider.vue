@@ -3,7 +3,8 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-          <h1>TAMAMLANMIŞ LAHİYƏLƏR</h1>
+          <!--          <h1>TAMAMLANMIŞ LAHİYƏLƏR</h1>-->
+          <h1>{{ $t('HELLO') }}</h1>
         </div>
         <div class="section_card_slider">
           <div class="swiper-button-prev" slot="button-prev"></div>
@@ -80,6 +81,7 @@ export default {
 .section_sliders_area h1 {
   text-align: center;
   margin-bottom: 30px;
+  filter: drop-shadow(3px -2px 2px black);
 }
 
 .section_card_slider {

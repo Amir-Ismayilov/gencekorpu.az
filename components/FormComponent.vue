@@ -124,7 +124,14 @@ export default {
         message: this.user.message,
       })
         .then((response) => {
-          document.getElementById("contact_form").reset();
+          this.user = {
+            name: "",
+            surname: "",
+            telephone: "",
+            email: "",
+            message: "",
+          };
+          // document.getElementById("contact_form").reset();
           this.$v.$reset();
           this.$toast.success('Sorğunuz uğurla göndərildi.');
         })
@@ -149,6 +156,7 @@ export default {
   text-align: center;
   display: inline-block;
   margin-bottom: 30px;
+  filter: drop-shadow(3px -2px 2px black);
 }
 
 .login-box {
@@ -167,7 +175,7 @@ export default {
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
-  color: var(--main-font-color) !important;
+  color: #000000 !important;
   margin-bottom: 25px;
   border: none;
   border-bottom: 2px solid rgb(209 213 219);
@@ -308,6 +316,12 @@ export default {
   color: var(--light-mode-font-color-white);
   background-color: var(--light-mode-bg-color-main);
   min-width: 200px;
+  border: 1px solid var(--light-mode-bg-color-main);
+}
+
+.btn_send:hover {
+  color: var(--light-mode-bg-color-main);
+  background-color: transparent;
 }
 
 .error-text {

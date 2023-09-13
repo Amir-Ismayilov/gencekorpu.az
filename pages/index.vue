@@ -5,13 +5,13 @@
     <!-- Card Slider Area -->
     <CardSlider/>
     <!-- Management Area -->
-    <ManagementComponent/>
+    <ManagementComponent v-if="settingsAll.management_status === 'true'"/>
     <!-- Synced Slider Area -->
     <SyncedSlider/>
     <!-- News Area -->
     <ShortNews/>
     <!-- Form Area -->
-    <section class="section_form_area">
+    <section class="section_form_area" v-if="settingsAll.contact_form === 'true'">
       <FormComponent/>
     </section>
   </section>
@@ -24,6 +24,7 @@ import ManagementComponent from "../components/ManagementComponent";
 import SyncedSlider from "../components/sliders/SyncedSlider";
 import ShortNews from "../components/news/ShortNews";
 import FormComponent from "../components/FormComponent";
+import {mapGetters} from "vuex";
 
 export default {
   name: 'IndexPage',
@@ -35,6 +36,12 @@ export default {
     ShortNews,
     FormComponent,
   },
+  computed: {
+    ...mapGetters({settingsAll: "module/settings/getAllSettings"}),
+  },
+  mounted() {
+    console.log(this.settingsAll)
+  }
 }
 </script>
 
@@ -53,10 +60,11 @@ export default {
   margin-bottom: 30px;
   text-align: center;
   color: var(--light-mode-font-color-white);
+  filter: drop-shadow(3px -2px 2px black);
 }
 
 .section_form_area {
   padding: 60px 0;
-  background-image: url(https://www.gencekorpu.az/demo/image/heroslider/img8.jpg);
+  background-image: url(../assets/images/background/form.jpg);
 }
 </style>

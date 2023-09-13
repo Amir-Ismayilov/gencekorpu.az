@@ -30,7 +30,7 @@
           </div>
         </div>
 
-        <div class="col-12">
+        <div class="col-12" v-if="settingsAll.contact_form === 'true'">
           <div class="section_form_contacts">
             <FormComponent/>
           </div>
@@ -52,7 +52,10 @@ export default {
     FormComponent
   },
   computed: {
-    ...mapGetters({contactsAll: "module/contacts/getAllContacts"}),
+    ...mapGetters({
+      contactsAll: "module/contacts/getAllContacts",
+      settingsAll: "module/settings/getAllSettings"
+    }),
   },
   mounted() {
     console.log(this.contactsAll)
@@ -72,6 +75,7 @@ export default {
   text-align: center;
   color: var(--light-mode-font-color-white);
   margin-bottom: 30px;
+  filter: drop-shadow(3px -2px 2px black);
 }
 
 .section_form_contacts {

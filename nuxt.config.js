@@ -56,9 +56,9 @@ export default {
   modules: [
     '@nuxtjs/dotenv',
     '@nuxtjs/axios',
-    '@nuxtjs/toast'
+    '@nuxtjs/toast',
+    'nuxt-i18n',
   ],
-
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 

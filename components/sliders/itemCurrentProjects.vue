@@ -32,10 +32,17 @@ export default {
   border-radius: 5px;
   width: 100%;
   min-height: 300px;
-  border: 1px solid #000000;
+  border: 1px solid #ddd;
+  box-shadow: 3px 4px 9px rgba(36, 36, 36, .15);
   margin: 10px 0;
   padding: 5px;
   overflow: hidden;
+  transition: 0.5s;
+}
+
+.card_container:hover {
+  border: 1px solid #ddd;
+  box-shadow: 6px 8px 15px rgba(36, 36, 36, .15);
 }
 
 .card_container_image {
@@ -79,5 +86,14 @@ export default {
   border-radius: 5px;
   background-color: var(--light-mode-bg-color-main);
   margin-bottom: 15px;
+  border: 1px solid #ddd;
+  box-shadow: 3px 4px 9px rgba(36, 36, 36, .15);
+  transition: 0.5s;
+}
+
+.card_container_content a:hover {
+  color: var(--main-font-color);
+  border: 1px solid var(--light-mode-bg-color-main);
+  background-color: transparent;
 }
 </style>
