@@ -1,15 +1,12 @@
 <template>
   <section class="section_synced_slider">
-    <div class="swiper-button-prev" slot="button-prev"></div>
     <swiper :options="swiperOptions">
-      <swiper-slide v-for="(slider, index) in sliders" :key="index">
+      <swiper-slide v-for="(slider, index) in sliders" :key="index"  class="col-6 col-sm-6 col-md-4 col-lg-2">
         <img :src="slider.src" :alt="slider.id">
       </swiper-slide>
 
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
-
-    <div class="swiper-button-next" slot="button-next"></div>
   </section>
 </template>
 
@@ -23,22 +20,26 @@ export default {
       swiperOptions: {
         loop: true,
         autoplay: {
-          delay: 5000,
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          delay: 3000,
         },
         breakpoints: {
           640: {
-            slidesPerView: 1,
+            slidesPerView: 2,
             spaceBetween: 20,
           },
           768: {
-            slidesPerView: 2,
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          992: {
+            slidesPerView: 3,
             spaceBetween: 30,
           },
           1024: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+          1200: {
             slidesPerView: 5,
             spaceBetween: 40,
           },
@@ -56,7 +57,7 @@ export default {
 
 <style scoped>
 .section_synced_slider {
-  padding: 60px 0;
+  padding: 60px 34px;
   display: flex;
   align-items: center;
   background-color: var(--white-bg-color);
@@ -64,9 +65,7 @@ export default {
 
 .section_synced_slider img {
   width: 100%;
-}
-
-.swiper-button-prev, .swiper-button-next {
-  position: static;
+  border-radius: 5px;
+  box-shadow: 3px 4px 9px rgba(36,36,36,.15);
 }
 </style>

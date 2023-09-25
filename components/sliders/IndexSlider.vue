@@ -20,11 +20,14 @@
               <div class="slider_main_info">
                 <div class="container">
                   <div class="row">
-                    <div class="col-12">
+                    <div class="col-10 col-sm-10 col-md-11 col-lg-12">
                       <h2>{{ slider.title }}</h2>
-                      <span v-html="slider.content_az"></span>
+                      <span v-html="slider.content"></span>
                       <br>
-                      <nuxt-link :to="slider.url">Kecid et</nuxt-link>
+                      <nuxt-link :to="`/${$i18n.locale!='az' ? $i18n.locale : '/' }`+ slider.url">{{
+                          $t('more_details')
+                        }}
+                      </nuxt-link>
                     </div>
                   </div>
                 </div>
@@ -79,7 +82,7 @@ export default {
 
 <style scoped>
 .slider_wrapper {
-  height: 100vh;
+  height: calc(100vh - 120px);
   position: relative;
   background-position: center;
   background-size: cover;
@@ -88,30 +91,31 @@ export default {
 .slider_main_info {
   position: absolute;
   left: 60px;
-  bottom: 25vh;
+  bottom: 30vh;
 }
 
 .slider_main_info h2 {
   color: var(--main-font-color);
   font-size: 60px;
   font-weight: 700;
-  filter: drop-shadow(2px 4px 6px #000000);
+  filter: drop-shadow(2px 4px 6px black);;
 }
 
 .slider_main_info span {
   color: var(--light-mode-font-color-white);
   display: block;
   margin: 10px 0;
-  font-size: 32px;
+  font-size: 21px;
   font-weight: 700;
-  filter: drop-shadow(2px 4px 6px #000000);
+  filter: drop-shadow(2px 4px 6px black);;
 }
 
 .slider_main_info a {
   padding: 10px 15px;
+  color: #ffffff !important;
   background-color: var(--light-mode-bg-color-main);
   border-radius: 5px;
-  filter: drop-shadow(2px 4px 6px #000000);
+  filter: drop-shadow(2px 4px 6px black);
 }
 
 .my_swiper img {
@@ -121,12 +125,12 @@ export default {
 }
 
 .swiper-button-prev, .swiper-button-next {
-  top: 55%;
+  top: 45%;
 }
 
 .swiper-button-next, .swiper-button-prev {
   color: #ffffff;
-  margin: 10px;
+  margin: 5px;
   display: block;
   transition: 2s;
   user-select: none;
@@ -156,13 +160,12 @@ export default {
 
 @media screen and (max-width: 768px) {
   .slider_main_info h2 {
-    font-size: 32px;
+    font-size: 38px;
     font-weight: 600;
   }
 
   .slider_main_info span {
-    margin: 10px 0;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 600;
   }
 }

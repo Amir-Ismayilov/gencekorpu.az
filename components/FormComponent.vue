@@ -1,82 +1,82 @@
 <template>
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="main_title">
-            <h1>PEŞƏKAR KONSULTASİYA ALMAQ ÜÇÜN MÜRACİƏT EDİN</h1>
-            <div class="login-box">
-              <form @submit.prevent="handleSubmit" id="contact_form">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                      <div class="user-box">
-                        <input type="text" v-model="user.name" id="name" name="name" required=""
-                               @blur="$v.user.name.$touch()">
-                        <label>Ad</label>
-                        <!-- Error name -->
-                        <span v-if="$v.user.name.$error" class="error-text">* Bu xananın doldurulması məcburidir</span>
-                      </div>
-                    </div>
-
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                      <div class="user-box">
-                        <input type="text" v-model="user.surname" id="surname" name="surname" required=""
-                               @blur="$v.user.surname.$touch()">
-                        <label>Soyad</label>
-                        <!-- Error surname -->
-                        <span v-if="$v.user.surname.$error"
-                              class="error-text">* Bu xananın doldurulması məcburidir</span>
-                      </div>
-                    </div>
-
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                      <div class="user-box">
-                        <input type="tel" v-model="user.telephone" id="telephone" name="telephone" required=""
-                               @blur="$v.user.telephone.$touch()">
-                        <label>Telefon</label>
-                        <!-- Error phone -->
-                        <span v-if="$v.user.telephone.$error"
-                              class="error-text">* Bu xananın doldurulması məcburidir</span>
-                      </div>
-                    </div>
-
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-                      <div class="user-box">
-                        <input type="email" v-model="user.email" id="email" name="email" required=""
-                               @blur="$v.user.email.$touch()">
-                        <label>E-poçt</label>
-                        <!-- Error email -->
-                        <span v-if="$v.user.email.$error" class="error-text">
-                          <span v-if="!$v.user.email.required">* Bu xananın doldurulması məcburidir</span>
-                          <span v-else-if="!$v.user.email.email">* Düzgün e-poçt ünvanı daxil edin</span>
-                        </span>
-                      </div>
-                    </div>
-
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
-                      <div class="user-box">
-                        <input type="text" v-model="user.message" id="message" name="message" required=""
-                               @blur="$v.user.message.$touch()">
-                        <label>Mesaj</label>
-                        <!-- Error message -->
-                        <span v-if="$v.user.message.$error" class="error-text">
-                          <span v-if="!$v.user.message.required">* Bu xananın doldurulması məcburidir</span>
-                          <span v-else-if="!$v.user.message.minLength">* Mesaj 6 simvoldan uzun olmalıdır</span>
-                        </span>
-                      </div>
-                    </div>
-
-                    <div class="col-12 btn_form_container">
-                      <button class="btn btn_send">Göndər</button>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="main_title">
+          <h1>{{ $t('professional_consultation') }}</h1>
+          <div class="login-box">
+            <form @submit.prevent="handleSubmit" id="contact_form">
+              <div class="container">
+                <div class="row">
+                  <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="user-box">
+                      <input type="text" v-model="user.name" id="name" name="name" required=""
+                             @blur="$v.user.name.$touch()">
+                      <label>{{ $t('name') }}</label>
+                      <!-- Error name -->
+                      <span v-if="$v.user.name.$error" class="error-text">* {{ $t('field_is_mandatory') }}</span>
                     </div>
                   </div>
+
+                  <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="user-box">
+                      <input type="text" v-model="user.surname" id="surname" name="surname" required=""
+                             @blur="$v.user.surname.$touch()">
+                      <label>{{ $t('surname') }}</label>
+                      <!-- Error surname -->
+                      <span v-if="$v.user.surname.$error"
+                            class="error-text">* {{ $t('field_is_mandatory') }}</span>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="user-box">
+                      <input type="tel" v-model="user.telephone" id="telephone" name="telephone" required=""
+                             @blur="$v.user.telephone.$touch()">
+                      <label>{{ $t('phone') }}</label>
+                      <!-- Error phone -->
+                      <span v-if="$v.user.telephone.$error"
+                            class="error-text">* {{ $t('field_is_mandatory') }}</span>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="user-box">
+                      <input type="email" v-model="user.email" id="email" name="email" required=""
+                             @blur="$v.user.email.$touch()">
+                      <label>{{ $t('email') }}</label>
+                      <!-- Error email -->
+                      <span v-if="$v.user.email.$error" class="error-text">
+                          <span v-if="!$v.user.email.required">* {{ $t('field_is_mandatory') }}</span>
+                          <span v-else-if="!$v.user.email.email">* {{ $t('enter_valid_data') }}</span>
+                        </span>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="user-box">
+                      <input type="text" v-model="user.message" id="message" name="message" required=""
+                             @blur="$v.user.message.$touch()">
+                      <label>{{ $t('message') }}</label>
+                      <!-- Error message -->
+                      <span v-if="$v.user.message.$error" class="error-text">
+                          <span v-if="!$v.user.message.required">* {{ $t('field_is_mandatory') }}</span>
+                          <span v-else-if="!$v.user.message.minLength">* {{ $t('message_longer_6_characters') }}</span>
+                        </span>
+                    </div>
+                  </div>
+
+                  <div class="col-12 btn_form_container">
+                    <button class="btn btn_send">{{ $t('send') }}</button>
+                  </div>
                 </div>
-              </form>
-            </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -112,7 +112,7 @@ export default {
       this.$v.$touch();
 
       if (this.$v.$invalid) {
-        this.$toast.error('Zəhmət olmasa bütün sahələri düzgün doldurun.');
+        this.$toast.error(this.$t('fill_all_fields_correctly.'));
         return;
       }
 
@@ -133,13 +133,13 @@ export default {
           };
           // document.getElementById("contact_form").reset();
           this.$v.$reset();
-          this.$toast.success('Sorğunuz uğurla göndərildi.');
+          this.$toast.success(this.$t('request_sent_successfully.'));
         })
         .catch((err) => {
           if (err.response.status === 400) {
-            this.$toast.error('Xəta: Yanlış sorğu.');
+            this.$toast.error(this.$t('error_Invalid_request.'));
           } else if (err.response.status === 500) {
-            this.$toast.error('Server xətası.');
+            this.$toast.error(this.$t('server_error.'));
           }
         });
     }
@@ -152,18 +152,23 @@ export default {
 
 <style scoped>
 .main_title h1 {
-  color: var(--light-mode-font-color-white);
+  text-transform: uppercase;
+  color: var(--main-font-color);
   text-align: center;
   display: inline-block;
   margin-bottom: 30px;
-  filter: drop-shadow(3px -2px 2px black);
 }
 
 .login-box {
   padding: 50px 20px;
   border-radius: 5px;
-  opacity: 85%;
-  background-color: rgb(248 248 248);;
+  transition: 0.5s;
+  border: 1px solid rgba(25,25,28,.2);
+  background-color: rgb(248 248 248);
+}
+
+.login-box:hover {
+  border: 1px solid rgba(25,25,28,1);
 }
 
 .login-box .user-box {

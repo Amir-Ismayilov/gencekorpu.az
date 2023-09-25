@@ -6,7 +6,7 @@
         <div class="container">
           <div class="row">
             <div class="news_header_wrapper">
-              <h2>{{ getNews.title_az }}</h2>
+              <h2>{{ getNews.title }}</h2>
               <p>{{ getNews.published_date }}</p>
             </div>
           </div>
@@ -18,23 +18,16 @@
         <div class="container">
           <div class="row">
             <div class="news_body_wrapper">
-              <img :src="getNews.img" :alt="getNews.title_en">
-              <div v-html="getNews.content_az" class="news_main_content"></div>
-              <div class="news_footer_wrapper">
+              <img :src="getNews.img" :alt="getNews.title_en" v-if="!hideFooter">
+              <div v-html="getNews.content" class="news_main_content"></div>
+              <div class="news_footer_wrapper" v-if="!hideFooter">
                 <div class="news_footer_download_container">
-                  <strong>Xəbəri yükləyin:
-                    <img src="../../assets/icons/download_file.png" alt="download_icon" @click="downloadPDF">
+                  <strong>{{ $t('download_news') }}
+                    <img src="../../assets/icons/main/download_file.png" alt="download_icon" @click="downloadPDF">
                   </strong>
                 </div>
-
-                <ul class="news_main_social_links">
-                  <li><strong>Bizi izlə:</strong></li>
-                  <li><a href="#"><img src="../../assets/icons/social_media/facebook.svg"></a></li>
-                  <li><a href="#"><img src="../../assets/icons/social_media/youtube.svg"></a></li>
-                  <li><a href="#"><img src="../../assets/icons/social_media/linkedin.svg"></a></li>
-                  <li><a href="#"><img src="../../assets/icons/social_media/instagram.svg"></a></li>
-                </ul>
               </div>
+
             </div>
           </div>
         </div>
@@ -46,14 +39,14 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <h1>Digər xəbərlər</h1>
+            <h1>{{ $t('other_news') }}</h1>
           </div>
 
-          <div class="col-12 col-sm-6 col-md-6 col-lg-3" v-for="news in limitedNews" :key="news.id">
+          <div class="col-12 col-sm-6 col-md-6 col-lg-4" v-for="news in limitedNews" :key="news.id">
             <NewsItem :newsId="news.id"
                       :newsImage="news.img"
-                      :newsDescription="news.title_az"
-                      :newsContent="news.content_az"
+                      :newsDescription="news.title"
+                      :newsContent="news.content"
                       :newsPublishDate="news.published_date">
             </NewsItem>
           </div>
@@ -77,12 +70,13 @@ export default {
   data() {
     return {
       current_index: 0,
+      hideFooter: false,
     }
   },
   computed: {
     ...mapGetters({news: "module/news/getAllNews"}),
     limitedNews() {
-      return this.shuffleArray(this.news).slice(0, 4);
+      return this.shuffleArray(this.news.filter(newsItem => newsItem.id !== this.getNews.id)).slice(0, 3);
     }
   },
   async asyncData({store, route}) {
@@ -92,16 +86,22 @@ export default {
   },
   methods: {
     downloadPDF() {
-      const element = this.$refs.blogContent;
-      const opt = {
-        margin: 10,
-        filename: 'blog.pdf',
-        image: {type: 'jpeg', quality: 0.98},
-        html2canvas: {scale: 2},
-        jsPDF: {unit: 'mm', format: 'a4', orientation: 'portrait'}
-      };
+      this.hideFooter = true;
 
-      html2pdf().from(element).set(opt).save();
+      setTimeout(() => {
+        const element = this.$refs.blogContent;
+        const opt = {
+          margin: 10,
+          filename: `${this.getNews.title}.pdf`,
+          image: {type: 'jpeg', quality: 0.98},
+          html2canvas: {scale: 2},
+          jsPDF: {unit: 'mm', format: 'a4', orientation: 'portrait'}
+        };
+
+        html2pdf().from(element).set(opt).save();
+
+        this.hideFooter = false;
+      }, 100);
     },
 
 
@@ -112,13 +112,17 @@ export default {
       }
       return array;
     },
-  }
+  },
 }
 </script>
 
 <style scoped>
 .section_news_header {
-  padding: 50px 0 25px 0;
+  padding: 50px 15px 15px 15px;
+}
+
+.section_news_body {
+  padding: 0 15px;
 }
 
 .news_header_wrapper {
@@ -151,7 +155,7 @@ export default {
 .news_body_wrapper > img {
   display: block;
   margin: 0 auto;
-  width: 80%;
+  width: 90%;
   height: 250px;
   object-fit: contain;
 }
@@ -161,6 +165,7 @@ export default {
   margin-bottom: 30px;
   color: var(--dark-font-color);
   border-radius: 25px;
+  text-align: justify;
 }
 
 .section_news_other {
@@ -171,16 +176,7 @@ export default {
   max-width: 350px;
   margin: 40px auto;
   text-align: center;
-  color: var(--dark-font-color);
-  border-bottom: 1px solid var(--dark-font-color);
-  filter: drop-shadow(3px -2px 2px black);
-}
-
-.news_main_social_links {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
+  color: var(--main-font-color);
 }
 
 .news_footer_download_container strong {
@@ -205,11 +201,6 @@ export default {
   align-items: center;
 }
 
-.news_main_social_links img {
-  width: 30px;
-  height: 30px;
-  object-fit: cover;
-}
 
 @media only screen and (max-width: 768px) {
   .news_header_wrapper h2 {

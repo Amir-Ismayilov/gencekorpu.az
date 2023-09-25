@@ -7,11 +7,11 @@
         </div>
 
         <div class="col-12">
-          <p>{{ getPages.excerpt}}</p>
-          <p v-html="getPages.body"></p>
-<!--          <div v-if="getPages.image !==null">-->
-<!--            <img :src="getPages.image" alt=""  class="pages_images">-->
-<!--          </div>-->
+          <div class="page_main_texts" v-html="getPages.body"></div>
+
+          <div v-for="(info,index) in getPages.file_info" :key="index">
+            <a :href="info.download_link" target="_blank" class="pdf_link"> <span>{{ index + 1 + ")" }}</span> {{ info.original_name }}</a>
+          </div>
         </div>
       </div>
     </div>
@@ -40,12 +40,20 @@ export default {
   text-align: center;
   color: var(--main-font-color);
   margin-bottom: 30px;
-  filter: drop-shadow(3px -2px 2px black);
 }
 
-.pages_images {
-  width: 300px;
-  height: 300px;
-  object-fit: contain;
+.page_main_texts {
+  text-align: justify;
+}
+
+.pdf_link {
+  display: block;
+  margin: 10px 0;
+  text-transform: uppercase;
+  color: var(--main-font-color);
+}
+
+.pdf_link span {
+  color: var(--light-mode-bg-color-black);
 }
 </style>

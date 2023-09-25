@@ -6,9 +6,11 @@
           <div class="col-12">
             <div class="erorr_wrapper">
               <img src="../assets/images/background/error.jpg" alt="error_page">
-              <h3>We are sorry, the page you've <br>requested is not available!</h3>
+              <h3>{{ $t('error_404_text') }}</h3>
 
-              <nuxt-link to="/" class="error_btn">Back To Home Page</nuxt-link>
+              <nuxt-link :to="localePath('index')" class="error_btn">
+                {{ $t('back_to_home') }}
+              </nuxt-link>
             </div>
           </div>
         </div>
@@ -44,7 +46,6 @@ export default {
 }
 
 .erorr_wrapper h3 {
-  font-family: "Heebo", sans-serif;
   font-size: 36px;
   font-weight: bold;
   line-height: 1.2em;
@@ -56,8 +57,8 @@ export default {
 .error_btn {
   text-align: center;
   padding: 15px 30px;
+  color: #ffffff !important;
   background: var(--main-font-color);
-  color: #ffffff;
   font-size: 18px;
   font-weight: 500;
   transition: 0.5s;

@@ -19,7 +19,7 @@ export default {
     if (process.client) {
       const L = require("leaflet");
       require("leaflet-fullscreen");
-      const myIconPath = require('../assets/icons/place_point.png');
+      const myIconPath = require('../assets/icons/main/place_point.png');
 
       if (!this.map) {
         const mapId = 'map-' + this._uid;
@@ -37,13 +37,14 @@ export default {
         const customIcon = L.icon({
           iconUrl: myIconPath,
           iconSize: [50, 50],
-          iconAnchor: [29, 75],
-          popupAnchor: [-3, -76]
+          iconAnchor: [25, 25],
+          popupAnchor: [0, -30]
         });
 
-        L.marker([this.latitude, this.longitude], { icon: customIcon })
+        L.marker([this.latitude, this.longitude], {icon: customIcon})
           .addTo(this.map)
-          .bindPopup("<b>Ünvan: </b> <br>" + this.address);
+
+          .bindPopup("<b>" + this.$t('address') + "</b> <br>" + this.address);
       }
     }
   },
@@ -51,7 +52,7 @@ export default {
     if (this.map) {
       this.map.remove();
     }
-  }
+  },
 }
 </script>
 

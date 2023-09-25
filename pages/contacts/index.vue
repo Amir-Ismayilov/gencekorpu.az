@@ -3,21 +3,21 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h1>Əlaqə</h1>
+          <h1>{{ $t('contacts') }}</h1>
         </div>
         <div class="col-12 col-sm-12 col-md-6 col-lg-6" v-for="(contact, index) in contactsAll" :key="index">
           <div class="contacts_card">
             <div class="contacts_card_text">
               <p>
-                <span>Ünvan: </span>{{ contact.address }}
+                <span>{{ $t('address') }} </span>{{ contact.address }}
               </p>
 
               <p>
-                <span>Tel: </span>{{ contact.phone_number }}
+                <span>{{ $t('Tel:') }} </span>{{ contact.phone_number }}
               </p>
 
               <p>
-                <span>Fax: </span>{{ contact.fax }}
+                <span>{{ $t('Fax:') }} </span>{{ contact.fax }}
               </p>
             </div>
 
@@ -46,6 +46,7 @@ import FormComponent from "~/components/FormComponent";
 import {mapGetters} from "vuex";
 
 export default {
+  middleware: ["contact-middleware"],
   name: "index",
   components: {
     LeafletMap,
@@ -57,25 +58,18 @@ export default {
       settingsAll: "module/settings/getAllSettings"
     }),
   },
-  mounted() {
-    console.log(this.contactsAll)
-    console.log(this.contactsAll.latitude)
-    console.log(this.contactsAll.longitude)
-  }
 }
 </script>
 
 <style scoped>
 .section_contacts_container {
   padding: 70px 0;
-  background-color: var(--light-mode-bg-color-gray);
 }
 
 .section_contacts_container h1 {
   text-align: center;
-  color: var(--light-mode-font-color-white);
+  color: var(--main-font-color);
   margin-bottom: 30px;
-  filter: drop-shadow(3px -2px 2px black);
 }
 
 .section_form_contacts {
@@ -86,7 +80,12 @@ export default {
   padding: 20px;
   margin: 10px 0;
   border-radius: 5px;
-  box-shadow: 0 1px 15px 0 #000;
+  transition: 0.5s;
+  border: 1px solid  rgba(25,25,28,.2);
+}
+
+.contacts_card:hover {
+  border: 1px solid  rgba(25,25,28, 1);
 }
 
 .contacts_card_text {
@@ -97,11 +96,11 @@ export default {
   font-weight: 400;
   font-size: 18px;
   margin-bottom: 5px;
-  color: var(--grey-font-color);
+  color: var(--main-font-color);
 }
 
 .contacts_card p span {
   font-weight: 600;
-  color: var(--light-mode-font-color-white);
+  color: var(--main-font-color);
 }
 </style>

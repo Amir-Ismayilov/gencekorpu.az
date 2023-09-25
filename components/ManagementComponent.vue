@@ -68,7 +68,6 @@ export default {
 .management_area_left span {
   font-size: 15px;
   color: #fff;
-  font-family: sans-serif;
 }
 
 
@@ -76,7 +75,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--light-mode-bg-color-gray);
+  background-color: rgb(248, 248, 248);
   padding: 20px 0;
   min-height: 450px;
 }
@@ -84,6 +83,7 @@ export default {
 .management_area_right img {
   width: 100%;
   height: 250px;
+  border-radius: 5px;
   margin-bottom: 10px;
   object-fit: cover;
 }

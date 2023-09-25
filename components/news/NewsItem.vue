@@ -1,6 +1,6 @@
 <template>
   <div class="news_wrapper">
-    <nuxt-link :to="`/news/` + newsId">
+    <nuxt-link :to="`/${$i18n.locale!='az' ? $i18n.locale : '/' }`+`/news/` + newsId">
 
       <div class="news_publish_date">
         <span>{{ newsPublishDate ? newsPublishDate : "0000-00-00" }}</span>
@@ -11,7 +11,7 @@
       </div>
 
       <div class="news_description_container">
-        <p>{{ newsDescription }}</p>
+        <p v-html="newsDescription"></p>
       </div>
 
     </nuxt-link>
@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style scoped>
-.news_wrapper a{
+.news_wrapper a {
   display: flex;
   position: relative;
   flex-direction: column;
@@ -43,7 +43,7 @@ export default {
   background-color: rgba(220, 220, 220, 0.7);
   transition: 0.5s;
   color: var(--dark-font-color);
-  box-shadow: 0 2px 8px #000e140d;
+  box-shadow: 3px 4px 9px rgba(36, 36, 36, .15);
   cursor: pointer;
   border-radius: 5px;
   overflow: hidden;

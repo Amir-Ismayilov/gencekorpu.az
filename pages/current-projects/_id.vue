@@ -3,10 +3,10 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h1>{{ getCurrentProjects.title_az }}</h1>
+          <h1>{{ getCurrentProjects.title }}</h1>
         </div>
 
-        <div v-html="getCurrentProjects.content_az"></div>
+        <div class="mb-3" v-html="getCurrentProjects.content"></div>
 
         <div
           class="col-12 col-sm-6 col-md-4 col-lg-3 image"
@@ -64,13 +64,13 @@ export default {
 
 <style scoped>
 .current_projects_inside {
+  text-align: justify;
   padding: 70px 0;
 }
 
 .current_projects_inside h1 {
   color: var(--main-font-color);
   margin-bottom: 30px;
-  filter: drop-shadow(3px -2px 2px black);
 }
 
 .image {
@@ -85,7 +85,7 @@ export default {
 }
 
 .image:hover {
-  filter: grayscale(50%);
+  filter: blur(1px);
   transform: scale(1.01);
 }
 

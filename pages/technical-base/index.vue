@@ -17,7 +17,8 @@
           :style="{ backgroundImage: 'url(' + imageItem.src + ')' }">
         </div>
 
-        <gallery v-if="technicalBaseItem.images && technicalBaseItem.images.length > 0" :images="images" :index="index" @close="index = null"></gallery>
+        <gallery v-if="technicalBaseItem.images && technicalBaseItem.images.length > 0" :images="images" :index="index"
+                 @close="index = null"></gallery>
       </div>
     </div>
   </section>
@@ -28,6 +29,7 @@ import {mapGetters} from "vuex";
 import VueGallery from 'vue-gallery';
 
 export default {
+  middleware: ["technical-base-middleware"],
   name: "index",
   components: {
     'gallery': VueGallery
@@ -42,7 +44,7 @@ export default {
   computed: {
     ...mapGetters({technicalBaseInfo: "module/technical-base/getAllTechnicalBase"}),
   },
-  mounted() {
+  async created() {
     this.formatImages();
     if (Array.isArray(this.technicalBaseInfo) && this.$route.params.id) {
       this.current_index = this.technicalBaseInfo.findIndex(item => item.id === parseInt(this.$route.params.id));
@@ -53,7 +55,7 @@ export default {
       if (this.technicalBaseInfo && this.technicalBaseInfo.length > 0 && Array.isArray(this.technicalBaseInfo[0].images)) {
         this.images = this.technicalBaseInfo[0].images.map(item => item.src);
       }
-    }
+    },
   },
 }
 </script>
@@ -68,10 +70,10 @@ export default {
   text-align: center;
   color: var(--main-font-color);
   margin-bottom: 30px;
-  filter: drop-shadow(3px -2px 2px black);
 }
 
 .technical_base_content {
+  text-align: justify;
   margin: 30px 0;
 }
 
@@ -79,7 +81,6 @@ export default {
   text-align: center;
   color: var(--main-font-color);
   margin-bottom: 50px;
-  filter: drop-shadow(3px -2px 2px black);
 }
 
 .image {
@@ -94,7 +95,7 @@ export default {
 }
 
 .image:hover {
-  filter: grayscale(50%);
+  filter: blur(1px);
   transform: scale(1.01);
 }
 

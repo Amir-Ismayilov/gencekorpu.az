@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h1>Cari layihələr</h1>
+          <h1>{{ $t('current_projects') }}</h1>
         </div>
         <div class="col-12 col-sm-6 col-md-4 col-lg-3"
              v-for="(currentProject, index) in paginatedProjects"
@@ -11,8 +11,8 @@
           <itemCurrentProjects
             :ProjectsId="currentProject.id"
             :ProjectsImage="currentProject.image"
-            :ProjectsTitle="currentProject.title_az"
-            :ProjectsDescription="currentProject.content_az"
+            :ProjectsTitle="currentProject.title"
+            :ProjectsDescription="currentProject.content"
           />
         </div>
       </div>
@@ -49,6 +49,7 @@ import itemCurrentProjects from "@/components/sliders/itemCurrentProjects";
 import {mapGetters} from "vuex";
 
 export default {
+  middleware: ['current-projects-middleware'],
   name: "index",
   components: {
     itemCurrentProjects,
@@ -85,7 +86,7 @@ export default {
     goToPage(pageNum) {
       this.page = pageNum;
     }
-  }
+  },
 }
 </script>
 
@@ -99,7 +100,6 @@ export default {
   text-align: center;
   color: var(--main-font-color);
   margin-bottom: 30px;
-  filter: drop-shadow(3px -2px 2px black);
 }
 
 .pagination {
@@ -122,7 +122,7 @@ export default {
 }
 
 .pagination button.active {
-  background-color: #007BFF;
+  background-color: var(--light-mode-bg-color-main);
   color: #fff;
 }
 

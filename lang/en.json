@@ -1,0 +1,42 @@
+{
+  "choose_language": "Choose language",
+  "home_page": "Home",
+  "projects": "projects",
+  "current_projects": "Current projects",
+  "completed_projects": "Completed projects",
+  "technical_base": "Technical base",
+  "news": "News",
+  "latest_news": "latest news",
+  "professional_consultation": "Ask for professional advice",
+  "name": "name",
+  "surname": "surname",
+  "phone": "phone",
+  "email": "Email:",
+  "message": "message",
+  "send": "send",
+  "field_is_mandatory": "This field is mandatory",
+  "enter_valid_data": "Please enter a valid email address",
+  "message_longer_6_characters": "The message must be longer than 6 characters",
+  "fill_all_fields_correctly.": "Please fill in all fields correctly.",
+  "request_sent_successfully.": "Your request has been sent successfully.",
+  "error_Invalid_request": "Error: Invalid request.",
+  "server_error.": "Server error.",
+  "all_rights_reserved": "All rights reserved.",
+  "other_news": "Other news",
+  "download_news": "Download the news:",
+  "error_404_text": "We are sorry, the page you've requested is not available!",
+  "back_home_page": "Back to home page",
+  "address": "Address:",
+  "Tel:": "Tel:",
+  "Fax:": "Fax:",
+  "more_details": "more details",
+  "Detailed": "DETAILED",
+  "about_us": "About us",
+  "board_of_directors": "Board of directors",
+  "back_to_home": "Back To Home Page",
+
+
+
+
+  "contacts": "Contacts"
+}

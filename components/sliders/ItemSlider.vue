@@ -6,7 +6,7 @@
 
     <div class="card_container_content">
       <h4>{{ ProjectsTitle }}</h4>
-      <nuxt-link :to="`/completed-projects/` + ProjectsId">ƏTRAFLI</nuxt-link>
+      <nuxt-link :to="`/${$i18n.locale!='az' ? $i18n.locale : '/' }`+`/completed-projects/` +  ProjectsId">{{ $t('Detailed') }}</nuxt-link>
     </div>
   </div>
 </template>
@@ -74,7 +74,7 @@ export default {
   text-overflow: ellipsis;
   display: block;
   white-space: nowrap;
-  padding: 20px 10px;
+  padding: 20px 0;
 }
 
 .card_container_content a {

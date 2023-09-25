@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h1>Xəbərlər</h1>
+          <h1>{{ $t('news') }}</h1>
         </div>
 
         <div class="col-12 col-sm-6 col-md-6 col-lg-4"
@@ -11,8 +11,8 @@
              :key="index">
           <NewsItem :newsId="newsItem.id"
                     :newsImage="newsItem.img"
-                    :newsDescription="newsItem.title_az"
-                    :newsContent="newsItem.content_az"
+                    :newsDescription="newsItem.title"
+                    :newsContent="newsItem.content"
                     :newsPublishDate="newsItem.published_date"
           />
         </div>
@@ -50,12 +50,13 @@ import NewsItem from "../../components/news/NewsItem";
 import {mapGetters} from "vuex";
 
 export default {
+  middleware: ["news-middleware"],
   name: "index",
   components: {NewsItem},
   data() {
     return {
       page: 1,
-      itemsPerPage: 8,
+      itemsPerPage: 6,
     };
   },
   computed: {
@@ -75,10 +76,6 @@ export default {
       return _.range(start, end + 1);
     }
   },
-  mounted() {
-    console.log(this.newsAll)
-  },
-
   methods: {
     changePage(newPage) {
       this.page = _.clamp(newPage, 1, this.totalPages);
@@ -101,7 +98,6 @@ export default {
   text-align: center;
   color: var(--main-font-color);
   margin-bottom: 30px;
-  filter: drop-shadow(3px -2px 2px black);
 }
 
 .pagination {
@@ -124,7 +120,7 @@ export default {
 }
 
 .pagination button.active {
-  background-color: #007BFF;
+  background-color: var(--light-mode-bg-color-main);
   color: #fff;
 }
 

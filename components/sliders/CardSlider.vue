@@ -3,8 +3,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
-          <!--          <h1>TAMAMLANMIŞ LAHİYƏLƏR</h1>-->
-          <h1>{{ $t('HELLO') }}</h1>
+          <h1>{{ $t('completed_projects') }}</h1>
         </div>
         <div class="section_card_slider">
           <div class="swiper-button-prev" slot="button-prev"></div>
@@ -14,8 +13,8 @@
               <ItemSlider
                 :ProjectsId="completedProject.id"
                 :ProjectsImage="completedProject.image"
-                :ProjectsTitle="completedProject.title_az"
-                :ProjectsDescription="completedProject.content_az"
+                :ProjectsTitle="completedProject.title"
+                :ProjectsDescription="completedProject.content"
               />
             </swiper-slide>
 
@@ -43,7 +42,7 @@ export default {
       swiperOptions: {
         loop: true,
         autoplay: {
-          delay: 5000,
+          delay: 10000,
         },
         navigation: {
           nextEl: '.swiper-button-next',
@@ -55,10 +54,18 @@ export default {
             spaceBetween: 20,
           },
           768: {
-            slidesPerView: 2,
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          992: {
+            slidesPerView: 3,
             spaceBetween: 30,
           },
           1024: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+          1200: {
             slidesPerView: 5,
             spaceBetween: 40,
           },
@@ -75,13 +82,13 @@ export default {
 <style scoped>
 .section_sliders_area {
   padding: 60px 0;
-  background-color: var(--light-mode-bg-color-gray-2);
 }
 
 .section_sliders_area h1 {
+  text-transform: uppercase;
   text-align: center;
   margin-bottom: 30px;
-  filter: drop-shadow(3px -2px 2px black);
+  color: var(--main-font-color);
 }
 
 .section_card_slider {
@@ -90,7 +97,8 @@ export default {
 }
 
 .swiper-button-prev, .swiper-button-next {
-  color: #ffffff;
+  color: var(--light-mode-bg-color-main);
   position: static;
 }
+
 </style>
