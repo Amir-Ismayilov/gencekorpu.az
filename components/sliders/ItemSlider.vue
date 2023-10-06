@@ -26,11 +26,11 @@ export default {
 <style scoped>
 .card_container {
   display: flex;
+  gap: 10px;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
-  height: 300px;
   border: 1px solid #ddd;
   box-shadow: 3px 4px 9px rgba(36,36,36,.15);
   margin: 10px 0;
@@ -47,7 +47,7 @@ export default {
 
 .card_container_image img {
   width: 100%;
-  max-height: 250px;
+  height: 160px;
   object-fit: cover;
   transition: 0.5s;
 }

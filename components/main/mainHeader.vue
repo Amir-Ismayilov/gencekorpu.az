@@ -3,7 +3,7 @@
     class="section_main_header"
     :class="{ fixed: isHeaderFixed }"
   >
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
         <header>
           <div class="logo_main_wrapper">
@@ -79,11 +79,15 @@
               <div><a :href="`mailto:` + settingAll.email_header">{{ settingAll.email_header }}</a></div>
               <div><a :href="`tel:` + settingAll.tel">{{ settingAll.tel }}</a></div>
             </div>
-            <div @click="toggleTheme" class="button-theme" :class="{ isDarkMode: isDarkMode }">
-              <v-icon name="sun" class="sun-icon"></v-icon>
-              <v-icon name="moon" class="moon-icon"></v-icon>
-            </div>
-            <LanguageSwitcher/>
+
+            <!--            <div class="btn_group">-->
+            <!--              <div @click="toggleTheme" class="button-theme" :class="{ isDarkMode: isDarkMode }">-->
+            <!--                <v-icon name="sun" class="sun-icon"></v-icon>-->
+            <!--                <v-icon name="moon" class="moon-icon"></v-icon>-->
+            <!--              </div>-->
+            <!--              <LanguageSwitcher/>-->
+            <!--            </div>-->
+
             <div class="mobile_nav">
               <button class="hamburger" @click="toggleMenu">
                 <div :class="['hamburger-inner', { 'open': isOpen }]"></div>
@@ -154,6 +158,14 @@
                 </div>
               </transition>
             </div>
+          </div>
+
+          <div class="btn_group">
+            <div @click="toggleTheme" class="button-theme" :class="{ isDarkMode: isDarkMode }">
+              <v-icon name="sun" class="sun-icon"></v-icon>
+              <v-icon name="moon" class="moon-icon"></v-icon>
+            </div>
+            <LanguageSwitcher/>
           </div>
         </header>
       </div>
@@ -290,6 +302,13 @@ export default {
   opacity: 1;
 }
 
+.btn_group {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
 /*---------------------------------------------------------------------------------------------------*/
 
 
@@ -325,7 +344,7 @@ export default {
 
 .section_main_header header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   position: relative;
 }
@@ -343,6 +362,7 @@ export default {
   width: 90px;
   height: 100%;
   object-fit: contain;
+  filter: drop-shadow(2px 4px 6px black);
 }
 
 .logo_main_wrapper a {
@@ -360,15 +380,16 @@ export default {
 
 .header_main_list nav > ul .header_main_item a {
   display: block;
-  font-size: 14px;
+  font-size: clamp(14px, 1vw, 16px);
   text-transform: uppercase;
   cursor: pointer;
 }
 
 .header_main_contact {
-  display: flex;
+  /*display: flex;*/
   justify-content: center;
   align-items: center;
+  display: none;
 }
 
 .header_main_contact div:first-child {
@@ -402,8 +423,8 @@ export default {
 /*Hamburger Menu*/
 .hamburger {
   position: absolute;
-  top: 17px;
-  right: 20px;
+  top: -9px;
+  right: 0;
   z-index: 1001;
   cursor: pointer;
   width: 30px;
@@ -510,8 +531,9 @@ export default {
     display: none;
   }
 
-  .section_main_header header {
-    justify-content: space-between;
+  .btn_group {
+    position: absolute;
+    right: 20px;
   }
 
   .dropdown {
@@ -535,6 +557,7 @@ export default {
 
   .menu-item:hover .dropdown {
     display: block;
+    min-width: 190px;
   }
 }
 

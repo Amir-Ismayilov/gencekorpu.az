@@ -64,7 +64,6 @@ export default {
 
 <style scoped>
 .completed_projects_inside {
-  text-align: justify;
   padding: 70px 0
 }
 

@@ -120,6 +120,7 @@ export default {
   width: 100px;
   height: 105px;
   object-fit: cover;
+  filter: drop-shadow(2px 4px 6px black);
 }
 
 .logo_main_wrapper_text {

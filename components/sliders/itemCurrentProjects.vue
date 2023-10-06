@@ -52,7 +52,7 @@ export default {
 
 .card_container_image img {
   width: 100%;
-  max-height: 200px;
+  height: 160px;
   object-fit: cover;
   transition: 0.5s;
 }
